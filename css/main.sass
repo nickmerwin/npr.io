@@ -1,0 +1,337 @@
+---
+---
+
+// RESET --------------------------------------------------------
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
+  border: 0
+  color: white
+  font-family: 'Open Sans Condensed', sans-serif
+  font-size: 15px
+  font-style: inherit
+  font-weight: normal
+  line-height: 15px
+  margin: 0
+  outline: 0
+  padding: 0
+
+
+input, select, textarea
+  font-family: 'Open Sans Condensed', sans-serif
+  font-size: inherit
+
+ol, ul
+  list-style: none
+
+pre
+  white-space: pre-wrap
+  white-space: -moz-pre-wrap
+  white-space: -pre-wrap
+  white-space: -o-pre-wrap
+  word-wrap: break-word
+
+table
+  border-collapse: separate
+  border-spacing: 0
+  position: relative
+
+caption, th, td
+  text-align: left
+  font-weight: normal
+
+blockquote
+  &:before, &:after
+    content: ""
+
+q
+  &:before, &:after
+    content: ""
+
+blockquote, q
+  quotes: "" ""
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+strong
+  font-family: 'Open Sans Condensed', sans-serif
+  font-weight: bold
+
+a
+  font-size: inherit
+
+span
+  color: inherit
+  font-family: inherit
+  font-size: inherit
+  font-weight: inherit
+
+
+// MIXINS ----------------------------------------------------
+@mixin boxShad($bsHoriz, $bsVert, $bsBlur, $bsSpread, $bsColor)
+  -webkit-box-shadow: $bsHoriz $bsVert $bsBlur $bsSpread $bsColor
+  -moz-box-shadow: $bsHoriz $bsVert $bsBlur $bsSpread $bsColor
+  box-shadow: $bsHoriz $bsVert $bsBlur $bsSpread $bsColor
+
+@mixin boxShadIn($bsHoriz, $bsVert, $bsBlur, $bsSpread, $bsColor)
+  -webkit-box-shadow: $bsHoriz $bsVert $bsBlur $bsSpread $bsColor inset
+  -moz-box-shadow: $bsHoriz $bsVert $bsBlur $bsSpread $bsColor inset
+  box-shadow: $bsHoriz $bsVert $bsBlur $bsSpread $bsColor inset
+
+@mixin boxShadDoub($bxHoriz, $bxVert, $bxBlur, $bxSpread, $bxColor, $byHoriz, $byVert, $byBlur, $bySpread, $byColor)
+  -webkit-box-shadow: $bxHoriz $bxVert $bxBlur $bxSpread $bxColor, $byHoriz $byVert $byBlur $bySpread $byColor inset
+  -moz-box-shadow: $bxHoriz $bxVert $bxBlur $bxSpread $bxColor, $byHoriz $byVert $byBlur $bySpread $byColor inset
+  box-shadow: $bxHoriz $bxVert $bxBlur $bxSpread $bxColor, $byHoriz $byVert $byBlur $bySpread $byColor inset
+
+@mixin borderRad($bR)
+  -webkit-border-radius: $bR
+  -moz-border-radius: $bR
+  border-radius: $bR
+
+@mixin borderRadUneven($brTL, $brTR, $brBR, $brBL)
+  -moz-border-radius-topleft: $brTL
+  -moz-border-radius-topright: $brTR
+  -moz-border-radius-bottomright: $brBR
+  -moz-border-radius-bottomleft: $brBL
+  -webkit-border-radius: $brTL $brTR $brBR $brBL
+  border-radius: $brTL $brTR $brBR $brBL
+
+@mixin gradBG($bgStart, $bgStop)
+  background: $bgStart
+  background: -moz-linear-gradient(top, $bgStart 0%, $bgStop 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$bgStart), color-stop(100%,$bgStop))
+  background: -webkit-linear-gradient(top, $bgStart 0%,$bgStop 100%)
+  background: -o-linear-gradient(top, $bgStart 0%,$bgStop 100%)
+  background: -ms-linear-gradient(top, $bgStart 0%,$bgStop 100%)
+  background: linear-gradient(top, $bgStart 0%,$bgStop 100%)
+
+@mixin css3transition($property, $duration, $type: linear)
+  transition: $property $duration $type
+  -moz-transition: $property $duration $type
+  -webkit-transition: $property $duration $type
+  -o-transition: $property $duration $type
+
+@mixin opens
+  font-family: 'Open Sans Condensed', sans-serif
+
+@mixin clearfix
+  &:after
+    content: "."
+    display: block
+    clear: both
+    visibility: hidden
+    line-height: 0
+    height: 0
+
+
+// COLORS --------------------------------------------------------
+$red: #ee623a
+$brown: #5c5145
+
+body
+  &.dark
+    background-color: black
+
+  &.light
+    color: black
+    background-color: white
+    #overlay, #settings
+      background-color: white
+      em
+        color: black
+    #audioWr
+      background-color: white
+      h2, a
+        color: black
+
+    #stories
+      .story
+        border-bottom: 1px solid #eee
+        background-color: white
+        color: black
+        .storyTitle a, .storyLink a, .storyInfo em, .storyInfo span
+          color: black
+
+        &.playing
+          .playBtn
+            color: #09f
+
+    .wrapper
+      color: black
+    #showSelect
+      background-color: #eee
+      a
+        color: black
+        &.current
+          color: #09f
+    footer a, #settings a, #settings label, #settings p
+      color: black
+
+    a#loadMore
+      color: black
+
+
+#overlay
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  opacity: 0.75
+  background-color: #000
+  z-index: 1000
+  em
+    display: block
+    opacity: 1
+    width: 50px
+    margin: 200px auto
+    font-size: 10em
+    font-family: Arial
+    -webkit-transform: rotate(-90deg)
+
+#audioWr
+  position: fixed
+  top: 0
+  left: 0
+  height: auto
+  background-color: #000
+  width: 100%
+  z-index: 100
+  padding: 10px 0
+  -webkit-box-shadow: 0 0 30px #000
+  box-shadow: 0 0 30px #000
+  -moz-box-shadow: 0 0 30px #000
+
+  #player
+    z-index: 100
+    width: 100%
+
+  #settingsBtn
+    position: absolute
+    top: 10px
+    right: 15px
+
+  audio
+    z-index: 100
+
+
+#audioWr h2
+  margin-bottom: 15px
+
+#titleDate
+  padding-left: 15px
+  color: #aaa
+
+.wrapper
+  overflow: hidden
+  position: relative
+  color: white
+  width: 100%
+
+#front, #back
+  position: absolute
+  overflow: scroll
+  // -webkit-overflow-scrolling: touch
+
+  -webkit-backface-visibility: hidden
+  -webkit-transition: 0.5s
+
+#front.flipped
+  -webkit-transform: rotateY(180deg)
+
+#back.flipped
+  -webkit-transform: rotateY(-180deg)
+
+#stories
+  width: 100%
+  .story //:nth-child(2n)
+    background-color: #222
+
+.story
+  border-bottom: 1px solid #333
+
+  position: relative
+
+  padding: 10px
+  // span
+  //   display: block
+
+  .storyLeft
+    float: left
+    padding-right: 15px
+
+    .storyImg
+      height: 50px
+      width: 50px
+      background-size: auto 50px
+
+  .storyRight
+
+  .storyLink
+    position: absolute
+    right: 5px
+    top: 40%
+
+  a
+    text-decoration: none
+
+  &.playing
+    .playBtn
+      color: #0ff
+  .storyLink
+    padding-right: 10px
+    float: right
+
+  .storyTitle
+    padding-bottom: 5px
+
+  .storyInfo
+    span
+      color: #aaa
+      font-size: 0.8em
+    em
+      color: #aaa
+      padding-right: 5px
+
+.break
+  float: none
+  clear: both
+
+#showSelect
+  padding: 15px
+  font-size: 1em
+  a
+    text-decoration: none
+    padding-right: 20px
+    color: #aaa
+    &.current
+      color: #0ff
+  background-color: #333
+  .hourly
+    float: right
+
+h2
+  padding: 0 15px
+  font-size: 1.2em
+  margin-bottom: 5px
+
+p
+  padding: 0 15px
+  margin-top: 20px
+footer
+  padding: 0 15px 15px
+
+  .addthis_toolbox
+    margin-top: 15px
+    .addthis_button_facebook_like
+      width: 75px !important
+    .addthis_button_tweet
+      width: 80px !important
+    .addthis_button_google_plusone
+      width: 65px !important
+
+
+#settings
+  padding: 15px
+  background-color: #000
+

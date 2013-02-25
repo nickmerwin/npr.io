@@ -1,0 +1,4 @@
+.DS_Store
+_site
+.env
+_jekyll_s3.yml

@@ -1,0 +1,35 @@
+---
+---
+
+#settings
+
+  #settingsCloseBtn
+    %a{href:"javascript://"}
+      Back
+
+  #options
+    %p
+      %input#sAutoPlay{type:"checkbox"}
+      %label{for: "sAutoPlay"}
+        Autoplay
+
+    %p
+      %input#sShowImage{type:"checkbox"}
+      %label{for: "sShowImage"}
+        Show Image
+
+    %p
+      %input#sStartWithHourly{type:"checkbox"}
+      %label{for: "sStartWithHourly"}
+        Start with hourly newscast
+
+    %p#sColorscheme
+      Colorscheme
+      %br
+      %input#sColorDark{type:"radio", name: "color", value: "dark"}
+      %label{for: "sColorDark"}
+        Dark
+      %br
+      %input#sColorLight{type:"radio", name: "color", value: "light"}
+      %label{for: "sColorLight"}
+        Light

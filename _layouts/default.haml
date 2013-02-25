@@ -1,0 +1,34 @@
+---
+---
+!!! 5
+%html(lang="en")
+  %head
+    %title NPR.io
+    %meta{name: "description", content: "Instant NPR"}
+    %meta{name: "keywords", content: "NPR streaming"}
+
+    %meta{content: 'initial-scale=1.0, maximum-scale=1.0, user-scalable=0', name: 'viewport'}
+    %meta{name: "viewport", content: "width=device-width"}
+    %meta{:content => "width=320.1", :name => "viewport"}/
+    / %meta{:content => "black", :name => "apple-mobile-web-app-status-bar-style"}/
+    / %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}/
+    %meta{:content => "initial-scale=1.0", :name => "viewport"}/
+    :erb
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    %link{:rel => "stylesheet", :href => "/css/main.css", :type => "text/css"}
+    %link{rel: "shortcut icon", href: "/favicon.ico", type: "image/x-icon"}
+    %link{href: 'http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700', rel: 'stylesheet', type: 'text/css'}
+
+    %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js", type: "text/javascript"}
+    %script{src: "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js", type: "text/javascript"}
+    %script{src: "/javascripts/moment.min.js", type: "text/javascript"}
+    %script{src: "/javascripts/app.js", type: "text/javascript"}
+
+  %body
+    .wrapper#front== {{content}}
+
+    .wrapper.flipped#back
+      {% convert_include settings.haml %}
+
+    {% include ga.html %}

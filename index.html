@@ -1,0 +1,80 @@
+---
+layout: default
+title: NPR.io
+---
+
+<div id="overlay"><em>V</em></div>
+
+<div id="audioWr">
+  <h2><span id="title"></span><span id="titleDate"></span></h2>
+  <div id="settingsBtn"><a href="javascript://">settings</a></div>
+  <audio id="player" type="audio/mpeg" controls style="display:none"></audio>
+</div>
+
+<div id="showSelect">
+  <a href="javascript://" data-show="atc">ATC</a>
+  <a href="javascript://" data-show="me">ME</a>
+  <a href="javascript://" data-show="we_sat">WE sat</a>
+  <a href="javascript://" data-show="we_sun">WE sun</a>
+  <a href="javascript://" data-show="hourly" class='hourly'>Hourly</a>
+</div>
+
+<div id="stories"></div>
+
+<p><a href="javascript://" id="loadMore">load more</a>
+
+<script id='tmpl-story' type='text/template'>
+
+  <% if(imgSrc && showImage()){ %>
+    <div class='storyLeft'>
+      <a href="javascript://" class="playBtn">
+        <div class='storyImg' style="background-image:url(<%= imgSrc %>)">
+        </div>
+      </a>
+    </div>
+  <% } %>
+
+  <div class='storyRight'>
+    <div class='storyTitle'>
+      <a href="javascript://" class="playBtn">
+        <%= title %>
+      </a>
+    </div>
+
+    <div class='storyInfo'>
+      <em><%= duration %></em>
+      <span><%= date %></span>
+      <% if(hasPlayed()) { %>
+        <em class="hasPlayed">&#x2713;</em>
+      <% } %>
+    </div>
+
+  </div>
+
+  <div class='storyLink'>
+    <a href="<%= url %>" target="_blank">&rarr;</a>
+  </div>
+
+  <div class='break'></div>
+
+</script>
+
+<br/>
+<br/>
+
+<footer>
+  NPR.io was created by
+  <a href="http://twitter.com/nickmerwin" target="_blank">@NickMerwin</a>
+  and is not affiliated with National Public Radio.
+
+  <!-- AddThis Button BEGIN -->
+  <div class="addthis_toolbox addthis_default_style ">
+  <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+  <a class="addthis_button_tweet"></a>
+  <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51136bc87bab629f"></script>
+  <!-- AddThis Button END -->
+</footer>
